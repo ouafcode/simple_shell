@@ -5,3 +5,5 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+void exct(char **argv);
+char get_path(char *cmd);
