@@ -50,10 +50,10 @@ char **_strtok(char *str, char *d)
  * @d: the delimeter string
  * return 1 if true ,0 if false
  */
-int dl_check(char c, char *d)
+int dl_check(char c, char *dl)
 {
-	while (*d)
-		if (*d++ == c)
+	while (*dl)
+		if (*dl++ == c)
 			return (1);
 	return (0);
 }
