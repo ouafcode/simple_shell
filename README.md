@@ -42,7 +42,8 @@ $ cat test_ls_2 | ./hsh
 hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 $
-objectif 👍
+````
+### Objectif 👍
 task 0
 betty checks executed
 task 1
