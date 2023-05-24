@@ -8,11 +8,9 @@
 char *get_env(const char *name_pth)
 {
 	char **env_cpy;
-	char *var;
-        char *name, *pth;
+	char *var, *name, *pth;
 	int comp;/*to compare*/
-	unsigned int len_pth;
-        unsigned int env_len, len, i;
+	unsigned int len_pth, env_len, len, i;
 
 	env_len = 0;
 	while (environ[env_len] != NULL)
@@ -20,10 +18,8 @@ char *get_env(const char *name_pth)
 
 	env_cpy = NULL;
 	env_cpy = envr_cpy(env_cpy, env_len);
-
 	len = my_strlen((char *)name_pth);
 	i = 0;
-
 	while (env_cpy[i] != NULL)
 	{
 		var = env_cpy[i];
@@ -39,7 +35,6 @@ char *get_env(const char *name_pth)
 			}
 			len_pth = my_strlen(name);
 			pth = malloc(sizeof(char) * len_pth + 1);
-
 			if (pth == NULL)
 			{
 				err(3);
@@ -48,10 +43,8 @@ char *get_env(const char *name_pth)
 			pth = my_strcpy(pth, name);
 			arr_free(env_cpy, env_len);
 			return (pth);
-		}
-		i++;
+		} i++;
 	}
-
 	return (NULL);
 }
 /**

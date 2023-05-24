@@ -18,7 +18,7 @@ void err(int nbr)
 		perror("Error");
 		break;
 
-	case 3: 
+	case 3:
 		write(STDERR_FILENO, ERROR_MALOC, my_strlen(ERROR_MALOC));
 		break;
 	case 4:

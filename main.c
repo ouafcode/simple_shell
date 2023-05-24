@@ -6,13 +6,8 @@
  */
 int main(void)
 {
-	char *get_line;
-        char *pth;
-        char *pth_full;
-	char **parse;
-	int flag;
-        int sts_built;
-        int child_sts;
+	char *get_line, *pth, *pth_full, **parse;
+	int flag, sts_built, child_sts;
 	struct stat buffer;
 
 	while (TRUE)
@@ -37,23 +32,16 @@ int main(void)
 			continue;
 		if (sts_built == -1)
 			_exit(EXIT_SUCCESS);
-
-		/*if full path not in malloc*/
 		flag = 0;
 		pth = get_env("PATH");
 		pth_full = pth_src(parse[0], pth_full, pth);
-
 		if (pth_full == NULL)
-
 			pth_full = parse[0];
 		else
 			flag = 1;
-
 		child_sts = prc_child(pth_full, parse);
-
 		if (child_sts == -1)
 			err(2);
-
 		ts_free(parse, pth, get_line, pth_full, flag);
 	}
 	return (0);

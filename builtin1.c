@@ -50,7 +50,7 @@ int my_strncmp(char *vn, char *var, unsigned int size)
 
 	return (1);
 }
-/*
+/**
  * my_strcpy - to copy string
  * @to: str to copy to
  * @from: str to copy from

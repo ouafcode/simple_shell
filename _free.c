@@ -1,19 +1,19 @@
 #include "main.h"
 /**
  * ts_free - to free all allocation in memory
- * @parse: to parse array
+ * @pars: to parse array
  * @pth: point to path
- * @get_line: input line
+ * @line: input line
  * @pth_full: point to full path
  * @flag: to mark if full path is in malloc
  *
  * Return: return nothing (void)
  */
-void ts_free(char **parse, char *pth, char *get_line, char *pth_full, int flag)
+void ts_free(char **pars, char *pth, char *line, char *pth_full, int flag)
 {
 	free(pth);
-	free(parse);
-	free(get_line);
+	free(pars);
+	free(line);
 	if (flag == 1)
 		free(pth_full);
 }

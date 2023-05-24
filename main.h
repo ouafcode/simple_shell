@@ -83,7 +83,7 @@ link_st *pth_link(char *var, link_st *hd);
 
 /* function to free*/
 
-void ts_free(char **parse, char *pth, char *get_line, char *pth_full, int flag);
+void ts_free(char **pars, char *pth, char *line, char *pth_full, int flag);
 void arr_free(char **arr, unsigned int size);
 
 #endif /* MAIN_H */
