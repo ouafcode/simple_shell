@@ -1,0 +1,19 @@
+./" This is the man page of the simple shell project
+
+.TH SIMPLE "2023-05-24" "V1.0" "Simple man page"
+
+.SH NAME
+Simple shell (hsh)
+
+
+.SH DESCRIPTION
+this simple shell is program that read input line from user \
+and execut to other command, also to manupulate the environmement\
+of the current process and use the PATH to find programs, [see SYNOPOSIS]
+
+.SH SYNOPOSIS
+.PP
+.B ./hsh
+
+.SH AUTHORS
+.B ouafae saim & amine abbes
