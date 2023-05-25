@@ -47,71 +47,120 @@ $
 task 0
 betty checks executed
 task 1
-Display a prompt and wait for the user to type a command. A command line always ends with a new line.
-The prompt is displayed again each time a command has been executed.
-The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
-The command lines are made only of one word. No arguments will be passed to programs.
-If an executable cannot be found, print an error message and display the prompt again.
-Handle errors.
-You have to handle the “end of file” condition (Ctrl+D)
+-Display a prompt and wait for the user to type a command. A command line always ends with a new line.
+-The prompt is displayed again each time a command has been executed.
+-The command lines are simple, no semicolons, no pipes, no redirections or any other advanced features.
+-The command lines are made only of one word. No arguments will be passed to programs.
+-If an executable cannot be found, print an error message and display the prompt again.Handle errors.
+-You have to handle the “end of file” condition (Ctrl+D)
+
 task 2
-Handle command lines with arguments
+-Handle command lines with arguments
+
 task 3
-Handle the PATH
-fork must not be called if the command doesn’t exist
+-Handle the PATH
+-fork must not be called if the command doesn’t exist
+
 task 4
-Implement the exit built-in, that exits the shell
-Usage: exit
-You don’t have to handle any argument to the built-in exit
+-Implement the exit built-in, that exits the shell
+-Usage: exit
+-You don’t have to handle any argument to the built-in exit
+
 task 5
-Implement the env built-in, that prints the current environment
+-Implement the env built-in, that prints the current environment
+
 task 6 advanced
-Write your own getline function
-Use a buffer to read many chars at once and call the least possible the read system call
-You will need to use static variables
-You are not allowed to use getline
+-Write your own getline function
+-Use a buffer to read many chars at once and call the least possible the read system call
+-You will need to use static variables
+-You are not allowed to use getline
+
 task 7 advanced
-You are not allowed to use strtok
+-You are not allowed to use strtok
+
 task 8 advanced
-handle arguments for the built-in exit
-Usage: exit status, where status is an integer used to exit the shell
+-handle arguments for the built-in exit
+-Usage: exit status, where status is an integer used to exit the shell
+
 task 9 advanced
-Implement the setenv and unsetenv builtin commands
+-Implement the setenv and unsetenv builtin commands 
 setenv
-Initialize a new environment variable, or modify an existing one
-Command syntax: setenv VARIABLE VALUE
-Should print something on stderr on failure
+-Initialize a new environment variable, or modify an existing one
+-Command syntax: setenv VARIABLE VALUE
+-Should print something on stderr on failure
 unsetenv
-Remove an environment variable
-Command syntax: unsetenv VARIABLE
-Should print something on stderr on failure
+-Remove an environment variable
+-Command syntax: unsetenv VARIABLE
+-Should print something on stderr on failure
+
 task 10 advanced
-Implement the builtin command cd:
-Changes the current directory of the process.
-Command syntax: cd [DIRECTORY]
-If no argument is given to cd the command must be interpreted like cd $HOME
-You have to handle the command cd -
-You have to update the environment variable PWD when you change directory
+-Implement the builtin command cd:
+-Changes the current directory of the process.
+-Command syntax: cd [DIRECTORY]
+-If no argument is given to cd the command must be interpreted like cd $HOME
+-You have to handle the command cd -
+-You have to update the environment variable PWD when you change directory
 man chdir, man getcwd
+
 task 11 advanced
-Handle the commands separator ;
+-Handle the commands separator ;
+
 task 12 advanced
-Handle the && and || shell logical operators
+-Handle the && and || shell logical operators
+
 task 13 advanced
-Implement the alias builtin command
-Usage: alias [name[='value'] ...]
-alias: Prints a list of all aliases, one per line, in the form name='value'
-alias name [name2 ...]: Prints the aliases name, name2, etc 1 per line, in the form name='value'
-alias name='value' [...]: Defines an alias for each name whose value is given. If name is already an alias, replaces its value with value
+-Implement the alias builtin command
+-Usage: alias [name[='value'] ...]
+-alias: Prints a list of all aliases, one per line, in the form name='value'
+-alias name [name2 ...]: Prints the aliases name, name2, etc 1 per line, in the form name='value'
+-alias name='value' [...]: Defines an alias for each name whose value is given. If name is already an alias, replaces its value with value
+
 task 14 advanced
-Handle variables replacement
-Handle the $? variable
-Handle the $$ variable
+-Handle variables replacement
+-Handle the $? variable
+-Handle the $$ variable
+
 task 15 advanced
-Handle comments (#)
+-Handle comments (#)
+
 task 16 advanced
-Usage: simple_shell [filename]
-Your shell can take a file as a command line argument
-The file contains all the commands that your shell should run before exiting
-The file should contain one command per line
-In this mode, the shell should not print a prompt and should not read from stdin
+-Usage: simple_shell [filename]
+-Your shell can take a file as a command line argument
+-The file contains all the commands that your shell should run before exiting
+-The file should contain one command per line
+-In this mode, the shell should not print a prompt and should not read from stdin
+
+/*function declaration for execution*/
+
+void prmpt(int fl, struct stat buffer);
+char *my_getline(FILE *input);
+char **token_funct(char *string);
+char *pth_src(char *cmd, char *pth_full, char *pth);
+int prc_child(char *pth_full, char **parse);
+void err(int vr_err);
+
+/*declaration for utulity functions*/
+
+void my_put(char *ptr);
+int my_strlen(char *str);
+int my_strcmp(char *vn, char *var, unsigned int size);
+int my_strncmp(char *vn, char *var, unsigned int size);
+char *my_strcpy(char *to, char *from);
+
+/* function for builtins */
+
+int _env(void);
+int my_exit(void);
+int _exec(char **parse);
+int nbr_built(link_blt built[]);
+
+/* functions for path*/
+
+char *get_env(const char *name_pth);
+char **envr_cpy(char **envr_cpy, unsigned int envr_size);
+link_st *pth_link(char *var, link_st *hd);
+
+/* function to free*/
+
+void ts_free(char **pars, char *pth, char *line, char *pth_full, int flag);
+void arr_free(char **arr, unsigned int size);
